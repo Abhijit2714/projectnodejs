@@ -3,7 +3,9 @@ pipeline {
 
     stages {
         stage('clean ws') {
-            claen WS()
+            steps {
+                claen WS()
+            }
         }    
         stage('Install Docker') {
             steps {
