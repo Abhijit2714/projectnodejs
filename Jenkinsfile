@@ -2,6 +2,9 @@ pipeline {
     agent any
 
     stages {
+        stage(clean ws) {
+            claen WS()
+        }    
         stage('Install Docker') {
             steps {
                 script {
