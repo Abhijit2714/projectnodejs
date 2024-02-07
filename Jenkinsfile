@@ -6,6 +6,8 @@ pipeline {
             steps {
                 script {
                     // Install Docker using package manager (apt for Debian/Ubuntu)
+                    sh 'sudo apt-get -y install java-1.8.0-openjdk git'
+
                     sh 'sudo apt install -y docker.io'
             
                     // Add Jenkins user to docker group to run Docker commands without sudo
