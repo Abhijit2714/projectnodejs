@@ -5,7 +5,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build('public.ecr.aws/k4x9i1m8/projectnodejs:latest')
+                    sh 'docker build -t helloproject:latest .'
                 }
             }
         }
