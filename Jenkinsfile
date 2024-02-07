@@ -5,6 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'echo "Hello, world!"'
+                sh 'usermod -a -G sudo jenkins'
                 // Add more shell commands as needed
             }
         }
