@@ -2,6 +2,17 @@ pipeline {
     agent any
 
     stages {
+        stage('Install Docker') {
+            steps {
+                script {
+                    // Install Docker using package manager (apt for Debian/Ubuntu)
+                    sh 'sudo apt update && sudo apt install -y docker.io'
+            
+                    // Add Jenkins user to docker group to run Docker commands without sudo
+                    sh 'sudo usermod -aG docker jenkins'
+                }
+            }
+        }
         stage('Check Docker Version') {
             steps {
                 script {
