@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent infivit
 
     stages {
         stage('Check Docker Version') {
