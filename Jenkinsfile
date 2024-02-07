@@ -2,6 +2,17 @@ pipeline {
     agent any
 
     stages {
+        stage('Check Docker Version') {
+            steps {
+                script {
+                    // Run Docker version command and capture output
+                    def dockerVersion = sh(script: 'docker --version', returnStdout: true).trim()
+
+                    // Print Docker version
+                    echo "Docker Version: ${dockerVersion}"
+                }
+            }
+        }
         stage('Build Docker Image') {
             steps {
                 script {
