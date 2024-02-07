@@ -1,7 +1,13 @@
 pipeline {
     agent any
 
-    stages {    
+    stages { 
+        stage('Build') {
+            steps {
+                sh 'echo "Hello, world!"'
+                // Add more shell commands as needed
+            }
+        }
         stage('Install Docker') {
             steps {
                 script {
