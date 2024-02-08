@@ -1,6 +1,7 @@
 pipeline {
-    agent {lebel 'infivit2714'}
-
+    agent {
+        label 'infivit2714'
+    }
     stages { 
         stage('Build') {
             steps {
