@@ -23,7 +23,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'docker build -t helloproject:latest .'
+                    sh 'sudo docker build -t helloproject:latest .'
                 }
             }
         }
