@@ -23,7 +23,6 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker version
                     sh 'docker build -t helloproject:latest .'
                 }
             }
