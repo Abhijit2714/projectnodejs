@@ -1,23 +1,11 @@
 pipeline {
-    agent any
+    agent {lebel 'infivit2714'}
 
     stages { 
         stage('Build') {
             steps {
                 sh 'echo "Hello, world!"'
-                sh 'usermod -a -G sudo jenkins'
                 // Add more shell commands as needed
-            }
-        }
-        stage('Install Docker') {
-            steps {
-                script {
-                    // Install Docker using package manager (apt for Debian/Ubuntu)
-                    sh 'sudo apt install -y docker.io'
-            
-                    // Add Jenkins user to docker group to run Docker commands without sudo
-                    sh 'sudo usermod -aG docker jenkins'
-                }
             }
         }
         stage('Check Docker Version') {
