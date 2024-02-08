@@ -2,6 +2,9 @@ pipeline {
     agent {
         label 'infivit2714'
     }
+    environment {
+        LD_LIBRARY_PATH = '/usr/lib/jvm'
+    }
     stages { 
         stage('Build') {
             steps {
