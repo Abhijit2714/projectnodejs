@@ -3,7 +3,9 @@ pipeline {
         label 'infivitlinux222714'
     }
     environment {
-        DOCKER_CREDENTIALS = credentials('docker-hub-credentials') // Replace 'docker-hub-credentials-id' with the ID of your Docker Hub credentials
+        DOCKER_CREDENTIALS = credentials('docker-hub-credentials') 
+        DOCKER_HUB_USERNAME = 'abhijitdhamne'
+        DOCKER_HUB_PASSWORD = 'Jagannath@2714'
     }
     stages {
         stage('Build') {
@@ -33,8 +35,9 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 script {
-                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_CREDENTIALS) {
-                        docker.image('helloproject').push('latest')
+                    withCredentials([usernamePassword(credentialsId: env.CREDENTIALS_ID, passwordVariable: 'Jagannath@2714', usernameVariable: 'abhijitdhamne')]) {
+                        sh 'docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD'
+                        sh 'docker push helloproject:latest'
                     }
                 }
             }
