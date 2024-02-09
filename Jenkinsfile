@@ -43,15 +43,9 @@ pipeline {
                 }
             }
         }
-        stage('Deploy to Kubernetes') {
-            steps {
-                script {
-                    kubernetesDeploy(
-                        kubeconfigId: '4fe870b1-28e3-471b-b6e4-c5a3a1f7371c',
-                        configs: 'deployment.yaml',
-                        enableConfigSubstitution: true
-                    )
-                }
+        stage('Apply Kubernetes files') {
+            withKubeConfig([credentialsId: '4fe870b1-28e3-471b-b6e4-c5a3a1f7371c', serverUrl: 'https://192.168.1.34:6443']) {
+              sh 'kubectl apply -f deployment.yaml'
             }
         }
     }
