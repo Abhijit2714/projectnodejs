@@ -46,6 +46,13 @@ pipeline {
         stage('Apply Kubernetes files') {
             steps {
                 script {
+                    withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', url: 'https://index.docker.io/v1/', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                        sh '''
+                            echo "Username: $USERNAME"
+                            echo "Password: $PASSWORD"
+                            # Use the credentials in your commands
+                        '''
+                        sh 'docker login -u $USERNAME -p $PASSWORD'
                     withKubeConfig([credentialsId: '4fe870b1-28e3-471b-b6e4-c5a3a1f7371c', serverUrl: 'https://192.168.1.34:6443']) {
                       sh 'kubectl apply -f deployment.yaml'
                     }
