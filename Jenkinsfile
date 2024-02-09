@@ -37,7 +37,7 @@ pipeline {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'Jagannath@2714', usernameVariable: 'abhijitdhamne')]) {
                         sh 'docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD'
-                        sh 'docker push abhijitdhamne/helloproject:latest'
+                        sh 'docker push helloproject:latest'
                     }
                 }
             }
