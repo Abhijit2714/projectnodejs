@@ -5,7 +5,7 @@ pipeline {
     environment {
         DOCKER_CREDENTIALS = credentials('2dbea0a2-9f04-4e85-8aa2-6061be55b590') // Replace 'docker-hub-credentials-id' with the ID of your Docker Hub credentials
     }
-    stages { 
+    stages {
         stage('Build') {
             steps {
                 sh 'echo "Hello, world!"'
@@ -26,7 +26,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'echo 123456 |sudo -S docker build -t helloproject:latest .'
+                    sh 'echo 123456 | sudo -S docker build -t helloproject:latest .'
                 }
             }
         }
@@ -38,6 +38,7 @@ pipeline {
                     }
                 }
             }
+        }
         stage('Deploy to Kubernetes') {
             steps {
                 script {
@@ -46,5 +47,4 @@ pipeline {
             }
         }
     }
-}
 }
