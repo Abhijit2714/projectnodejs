@@ -1,17 +1,19 @@
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: nodejs-app
-# spec:
-#   replicas: 1
-#   selector:
-#     matchLabels:
-#       app: nodejs-app
-#   template:
-#     metadata:
-#       labels:
-#         app: nodejs-app
-#     spec:
-#       containers:
-#       - name: nodejs-app
-#         image: your-aws-ecr-repo-uri:latest
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodejs-app
+  template:
+    metadata:
+      labels:
+        app: nodejs-app
+    spec:
+      containers:
+      - name: nodejs-app
+        image: <docker-hub-username>/<image-name>:<tag>
+        ports:
+        - containerPort: 3000 # Example port for your application
