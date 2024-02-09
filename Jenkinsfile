@@ -35,7 +35,7 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: "${DOCKER_CREDENTIALS}", url: 'https://index.docker.io/v1/', passwordVariable: "${DOCKER_HUB_PASSWORD}", usernameVariable: "${DOCKER_HUB_USERNAME}")]) {
+                    withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS, url: 'https://index.docker.io/v1/', passwordVariable: DOCKER_HUB_PASSWORD, usernameVariable: DOCKER_HUB_USERNAME)]) {
                         sh 'docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD'
                         sh 'docker tag helloproject abhijitdhamne/helloproject'
                         sh 'docker push abhijitdhamne/helloproject:latest'
