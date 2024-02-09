@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: nodejs-app
-        image: <docker-hub-username>/<image-name>:<tag>
+        image: abhijitdhamne/helloproject:latest
         ports:
         - containerPort: 3000 # Example port for your application
