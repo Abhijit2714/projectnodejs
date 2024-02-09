@@ -3,7 +3,7 @@ pipeline {
         label 'infivitlinux222714'
     }
     environment {
-        DOCKER_CREDENTIALS = credentials('2dbea0a2-9f04-4e85-8aa2-6061be55b590') // Replace 'docker-hub-credentials-id' with the ID of your Docker Hub credentials
+        DOCKER_CREDENTIALS = credentials('docker-hub-credentials') // Replace 'docker-hub-credentials-id' with the ID of your Docker Hub credentials
     }
     stages {
         stage('Build') {
