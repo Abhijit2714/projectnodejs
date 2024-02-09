@@ -2,11 +2,6 @@ pipeline {
     agent {
         label 'infivitlinux222714'
     }
-    environment {
-        DOCKER_CREDENTIALS = credentials('docker-hub-credentials') 
-        DOCKER_HUB_USERNAME = 'abhijitdhamne'
-        DOCKER_HUB_PASSWORD = 'Jagannath@2714'
-    }
     stages {
         stage('Build') {
             steps {
@@ -35,7 +30,7 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', url: 'https://index.docker.io/v1/', passwordVariable: 'jagannath@2714', usernameVariable: 'abhijitdhamne')]) {
+                    withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', url: 'https://index.docker.io/v1/')]) {
                         sh 'docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD'
                         sh 'docker tag helloproject abhijitdhamne/helloproject'
                         sh 'docker push abhijitdhamne/helloproject:latest'
